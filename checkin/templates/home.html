@@ -1,0 +1,38 @@
+{% extends "base.html" %} 
+ {% block content %}
+<div class="container">
+	
+        <h4>OUR TENANT/VISTORS</h4>
+        <div class="table-responsive"> 
+              <table id="mytable" class="table table-bordred table-striped">
+                   
+                   <thead>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th> Company</th>
+                    <th>Temperature</th>
+                    <th>Date</th>
+                    <th>Edit</th>
+                   </thead>
+     {% for item in data %}              
+          <tr>
+              <td>{{item.userTempId.name | upper}}</td>
+              <td>{{item.userTempId.telephone}}</td>
+              <td>{{item.userTempId.company | upper}}</td>
+              <td>{{item.temperature}}</td>
+              <td>{{item.date_posted}}</td>
+              <td><form method='Post'> {%  csrf_token  %}<button name ="submit" class="btn btn-secondary my-2 my-sm-0" type="submit" value={{item.userTempId.id}}>edit</button></form></td>
+          </tr>
+      {% endfor %}
+      </tbody>
+        
+     </table>
+</div>
+</div>
+</div>
+</div>
+
+    
+    
+     {% endblock content%} 
+

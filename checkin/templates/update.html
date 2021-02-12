@@ -1,0 +1,34 @@
+{% extends "base.html" %} 
+ {% block content %}
+ <div class="container">
+ <div class="row" class="form-group"> 
+        <div class="col-md-12">
+     <form method='Post'> 
+     {%  csrf_token  %}
+     <label for="add"><h3>Enter Temperature Record For {{data.first.userTempId.name}}</h3></label>
+     <input class="form-control" type="number"  placeholder="Enter new Temperature reading" name="temp" step=".01" min="10" max="100">
+      <button class="btn btn-secondary" type="submit" name="add" value={{data.first.userTempId.id}}>Add</button> 
+      </form>
+    </div>
+    <div>
+      <div class="row" > 
+        <div class="col-md-12">
+<div class="table-responsive"> 
+              <table id="mytable" class="table table-bordred table-striped">
+                   <h4>Temperature Records </h4>
+                   <thead>
+                   <th>Date</th>
+                    <th>Temperature</th>
+                   </thead>
+     {% for item in data %}              
+          <tr>
+              <td>{{item.date_posted}}</td>
+              <td>{{item.temperature}}</td>
+          </tr>
+      {% endfor %}
+      </table>
+</div>
+</div>
+</div>
+  </div>   
+ {% endblock content%} 
